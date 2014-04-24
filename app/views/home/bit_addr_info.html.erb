@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bitcoin Addresses</h3>
+    </div>
+    <div class="panel-body">
+      <%= link_to "Generate Bitcoin Address", "home/1/generate_addr.js", :remote => true , :id => "genAddr",:class=>"btn btn-primary" %>
+      <table class="table" id="bit_table">
+      <thead>
+      <tr>
+        <th>Address</th>
+        <th>Recieved</th>
+        <th>Confirmed</th>
+        <th>Generated</th>
+      </tr>
+      </thead>
+      <tbody>
+          <% @bitcoin_inf.each do |b| %>
+            <tr>
+                <td><%=b.bit_address%></td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td><%=time_ago_in_words(b.created_at)%> ago</td>
+            </tr>
+          <%end%>
+      </tbody>
+     </table>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#genAddr').bind('ajax:complete', function(event, data) {
+            $('#bit_table').html(data.responseText);
+        });
+    });
+</script>

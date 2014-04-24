@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PinBitcoins</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pin Bitcoins</a>
+      <div class="nav-inner"> 
+        <ul class="nav pull-right navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+            <% if current_user %>
+              <li><%= link_to 'Bet' ,bet_existing_path%></li>
+              <li><%= link_to 'Bit Addresses' ,bit_addr_info_path%></li>
+              <li><%= link_to "Profile", edit_user_path(current_user.id)  %></li>
+              <li><%= link_to "Sign out", signout_path, method: "delete"  %></li>
+            <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+            <% end %>
+        </ul>
+      </div>
+  </div>  
+</div>
+<div class="container">
+    <% flash.each do |key, value| %>
+       <%st =value.kind_of?String %>
+         <%if key.to_s=="danger" && !st %>
+          <div class="alert alert-<%= key %>">
+              <ul>
+                <% value.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+          </div>
+         <% else %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+         <% end %>
+    <% end %>
+<%= yield %>
+</div>
+</body>
+</html>

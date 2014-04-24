@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pub_key: MyString
+  priv_key: MyString
+  bit_address: MyString
+  user_id: MyString
+
+two:
+  pub_key: MyString
+  priv_key: MyString
+  bit_address: MyString
+  user_id: MyString

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Current Bets</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Creater</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <%@bet.each do  |b|%>
+                  <tr>
+                    <td><%=b.description%></td>
+                    <td><%=b.amount%> Bitcoins</td>
+                    <td><%@user = User.find_by_id(b.bet_creater_id)%><%=@user.name%></td>
+                    <td><%=b.date_of_bet%></td>
+                    <td>
+                      <%if current_user != @user%>
+                         <%= link_to 'Bet',:method => 'get',:action => 'bet_on' ,:id=>b.id,:remote => true,:format => :js %>
+                      <%end%>
+                    </td>
+                  </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>

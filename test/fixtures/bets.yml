@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyString
+  betbetween: MyString
+  amount: MyString
+  winner_id: MyString
+  bet_creater_id: MyString
+  date_of_bet: 2013-11-30
+
+two:
+  description: MyString
+  betbetween: MyString
+  amount: MyString
+  winner_id: MyString
+  bet_creater_id: MyString
+  date_of_bet: 2013-11-30

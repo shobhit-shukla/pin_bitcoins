@@ -1,0 +1,20 @@
+<table class="table">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Recieved</th>
+                        <th>Confirmed</th>
+                        <th>Generated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @bitcoin_inf.each do |b| %>
+                    <tr>
+                        <td><%=b.bit_address%></td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td><%=time_ago_in_words(b.created_at)%> ago</td>
+                    </tr>
+                <%end%>
+                </tbody>
+</table>
